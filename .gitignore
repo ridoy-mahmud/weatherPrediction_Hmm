@@ -1,0 +1,6 @@
+myenv/
+.idea/
+
+# Large dataset files
+WeatherEvents_Jan2016-Dec2022.csv
+*.csv

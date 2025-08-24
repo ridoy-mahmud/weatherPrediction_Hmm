@@ -1,0 +1,40 @@
+1. Import the required libraries
+2.   DATA PREPARATION
+       Data Preprocessing
+	    Create mappings
+       MODEL INITIALIZATION
+       Uniform initial probabilities
+       Initialize transition and emission matrices
+3. Define the model parameters
+     (Normalize to probabilities)
+     
+     for an example (In this example, The state space is defined as a state which is a list of two possible weather conditions: "****Sunny****" and "****Rainy****". The observation space is defined as observations which is a list of two possible observations: "****Dry****" and "****Wet****". The number of hidden states and the number of observations are defined as constants. 
+
+`   states = ["Sunny", "Rainy"] n_states = len(states) print('Number of hidden states :',n_states)  observations = ["Dry", "Wet"] n_observations = len(observations) print('Number of observations  :',n_observations)     `)
+
+ then Visualize HMM Parameters
+
+   4. Create an instance of the HMM model and Set the model parameters
+For an Example = The HMM model is defined using the hmm.CategoricalHMM class from the hmmlearn library. An instance of the ****CategoricalHMM**** class is created with the number of hidden states set to ****n_hidden_states**** and the parameters of the model are set using the ****startprob_, transmat_,**** and ****emissionprob_**** attributes to the state probabilities, transition probabilities, and emission probabilities respectively.
+
+`   model = hmm.CategoricalHMM(n_components=n_states) model.startprob_ = state_probability model.transmat_ = transition_probability model.emissionprob_ = emission_probability     `
+
+   5. Define an observation sequence -- Example=
+A sequence of observations is defined as a ****one-dimensional NumPy array.****
+
+The observed data is defined as observations_sequence which is a sequence of integers, representing the corresponding observation in the observations list.
+For an example - 
+`   observations_sequence = np.array([0, 1, 0, 1, 0, 0]).reshape(-1, 1) observations_sequence     `
+
+6.  Decoding the observation sequence (Mainly viterbi decoder)
+
+7.  Predict the most likely sequence of hidden states
+The most likely sequence of hidden states is computed using the prediction method of the HMM model.
+Example - 
+`   # Predict the most likely sequence of hidden states hidden_states = model.predict(observations_sequence) print("Most likely hidden states:", hidden_states)     `
+8. Compare with Naive Bayes (Baseline)
+9.  EVALUATION METRICS(Accuracy, F1-score , Confusion matrix,Accuracy-Loss Curve , report Mean Absolute Error (MAE) and Root Mean Squared
+Error (RMSE), )
+10. Compare with Naive Bayes (Baseline)
+11.  Plot the results
+(Precision & Recall , historical data ,heat maps for spatial patterns , simple scatter plots to compare forecast vs. observation)
